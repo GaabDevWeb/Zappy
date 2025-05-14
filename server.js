@@ -194,3 +194,11 @@ io.on('connection', (socket) => {
 });
 
 const PORT = 3000;
+
+server.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  
+  // Cria arquivos JSON se não existirem
+  if (!fs.existsSync(messagesPath)) writeJSON(messagesPath, []);
+  if (!fs.existsSync(contactsPath)) writeJSON(contactsPath, []);
+});
