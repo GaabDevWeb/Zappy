@@ -44,3 +44,7 @@ function readJSON(filePath) {
     return [];
   }
 }
+
+function writeJSON(filePath, data) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+}
