@@ -97,3 +97,16 @@ app.post('/delete-message', (req, res) => {
   writeJSON(messagesPath, filteredMessages);
   res.json({ success: true });
 });
+
+app.post('/save-contact', (req, res) => {
+  const contacts = readJSON(contactsPath);
+  const newContact = {
+    id: Date.now(),
+    name: req.body.name,
+    phone: req.body.phone,
+    createdAt: new Date().toISOString()
+  };
+  contacts.push(newContact);
+  writeJSON(contactsPath, contacts);
+  res.json({ success: true });
+});
