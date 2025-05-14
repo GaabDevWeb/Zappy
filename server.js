@@ -56,3 +56,15 @@ app.get('/', (req, res) => {
 app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
+
+app.post('/save-message', (req, res) => {
+  const messages = readJSON(messagesPath);
+  const newMessage = {
+    id: Date.now(),
+    text: req.body.message,
+    createdAt: new Date().toISOString()
+  };
+  messages.push(newMessage);
+  writeJSON(messagesPath, messages);
+  res.json({ success: true });
+});
