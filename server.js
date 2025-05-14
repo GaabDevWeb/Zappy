@@ -32,3 +32,6 @@ const activeSessions = {
   client: null,
   qrCode: null
 };
+
+const messagesPath = path.join(__dirname, 'db', 'messages.json');
+const contactsPath = path.join(__dirname, 'db', 'contacts.json');
