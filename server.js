@@ -74,3 +74,18 @@ app.get('/get-messages', (req, res) => {
   const sortedMessages = messages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   res.json(sortedMessages);
 });
+
+app.post('/update-message', (req, res) => {
+  const { id, text } = req.body;
+  const messages = readJSON(messagesPath);
+  const messageIndex = messages.findIndex(m => m.id === id);
+  
+  if (messageIndex !== -1) {
+    messages[messageIndex].text = text;
+    messages[messageIndex].updatedAt = new Date().toISOString();
+    writeJSON(messagesPath, messages);
+    res.json({ success: true });
+  } else {
+    res.status(404).json({ error: 'Message not found' });
+  }
+});
