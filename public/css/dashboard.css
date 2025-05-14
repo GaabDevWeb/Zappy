@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@font-face {
+  font-family: 'Nura';
+  src: url('../fonts/Nura-Normal.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reset e Configurações Gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nura', sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: url('../images/backGround\ 2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #000;
+  position: relative;
+}
+
+/* Layout Principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Seções e Cards */
+.sections-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section {
+  flex: 1;
+}
+
+.card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+}
+
+/* Formulários e Inputs */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #000;
+  font-size: 1rem;
+  background: #f9f9f9;
+  font-family: 'Nura', sans-serif;
+}
+
+/* Mensagens salvas */
+#messages-list li,
+.message-card,
+.message-text,
+.empty-message,
+.error-message {
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+}
+
+/* Contatos salvos */
+#contacts-list,
+.contact-card,
+.contact-info,
+.contacts-checkboxes,
+.contact-checkbox-item,
+#contacts-checkboxes label {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Números salvos */
+.contact-info span,
+.contact-checkbox-item label {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Botões */
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #333333f5;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Seção de Envio em Massa */
+.mass-send-section {
+  width: 100%;
+  position: relative;
+}
+
+
+#message-select{
+  background: none;
+}
+
+option{
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 10px 15px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+option:hover {
+  background-color: rgba(51, 51, 51, 0.1);
+  color: #000;
+}
+
+option:checked, 
+option:focus {
+  background-color: rgba(51, 51, 51, 0.9);
+  color: white;
+  font-weight: 500;
+}
+
+select:focus option:checked {
+  background: rgba(51, 51, 51, 0.9) !important;
+}
+
+option:checked {
+  background-color: #333;
+  color: white;
+}
+
+#show-sender-btn {
+  width: 50%;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+#sender-container {
+  margin-top: 1rem;
+}
+
+/* Listas de Mensagens e Contatos */
+#messages-container,
+#contacts-container {
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+#messages-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#messages-list li {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+/* Barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.mass-send-card {
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utilitários */
+.hidden {
+  display: none;
+}
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+  /* Espaço para o botão */
+}
+
+#send-status {
+  min-height: 80px; /* Aumenta a altura mínima */
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#send-mass-message-btn{
+  margin-top: 50px;
+}
+
+.mass-send-section {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  padding: 1.5rem; /* Adiciona mais espaço interno */
+}
+
+#show-sender-btn {
+  width: 100%;
+  padding: 1.5rem; /* Aumenta o padding do botão */
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+  background-color: #111;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+/* Ajuste para o container do sender quando aberto */
+#sender-container {
+  background: rgba(133, 133, 133, 0.253);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-top: 1rem;
+  padding: 1.5rem;
+}
+
+.glass-overlay {
+  z-index: -1;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+
+#contacts-checkboxes {
+  max-height: 160px; /* Defina o valor desejado para o espaço máximo */
+  overflow-y: auto;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
