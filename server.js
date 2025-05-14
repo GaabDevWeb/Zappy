@@ -115,3 +115,11 @@ app.get('/get-contacts', (req, res) => {
   const contacts = readJSON(contactsPath);
   res.json(contacts);
 });
+
+app.post('/delete-contact', (req, res) => {
+  const { id } = req.body;
+  const contacts = readJSON(contactsPath);
+  const filteredContacts = contacts.filter(c => c.id !== id);
+  writeJSON(contactsPath, filteredContacts);
+  res.json({ success: true });
+});
