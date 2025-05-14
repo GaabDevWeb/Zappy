@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 
+// Configurações para ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -13,6 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// Configurações do servidor
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'), {
   setHeaders: (res, filePath) => {
@@ -22,20 +24,24 @@ app.use(express.static(path.join(__dirname, 'public'), {
   }
 }));
 
+// Middleware CORS para desenvolvimento
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
+// Armazenamento de sessão
 const activeSessions = {
   client: null,
   qrCode: null
 };
 
+// Caminhos dos arquivos JSON
 const messagesPath = path.join(__dirname, 'db', 'messages.json');
 const contactsPath = path.join(__dirname, 'db', 'contacts.json');
 
+// Funções auxiliares para manipular JSON
 function readJSON(filePath) {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
@@ -49,6 +55,7 @@ function writeJSON(filePath, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
+// Rotas básicas
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -57,6 +64,7 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
+// Rotas para mensagens
 app.post('/save-message', (req, res) => {
   const messages = readJSON(messagesPath);
   const newMessage = {
@@ -98,6 +106,7 @@ app.post('/delete-message', (req, res) => {
   res.json({ success: true });
 });
 
+// Rotas para contatos
 app.post('/save-contact', (req, res) => {
   const contacts = readJSON(contactsPath);
   const newContact = {
@@ -124,6 +133,7 @@ app.post('/delete-contact', (req, res) => {
   res.json({ success: true });
 });
 
+// Rota para envio no WhatsApp
 app.post('/send-whatsapp', async (req, res) => {
   const { phone, message } = req.body;
 
@@ -146,7 +156,7 @@ app.post('/send-whatsapp', async (req, res) => {
   }
 });
 
-
+// Socket.IO para WhatsApp
 io.on('connection', (socket) => {
   console.log('Cliente conectado:', socket.id);
 
@@ -193,8 +203,8 @@ io.on('connection', (socket) => {
   });
 });
 
+// Inicia servidor
 const PORT = 3000;
-
 server.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
   
