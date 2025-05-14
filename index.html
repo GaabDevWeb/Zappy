@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Bot</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="main-bg"></div>
+  <div class="glass"></div>
+  <div class="center-container">
+    <div class="qr-card">
+      <div id="qrcode-container">
+        <img id="qrcode" alt="QR Code">
+      </div>
+      <div id="status-message">🔴 Desconectado</div>
+      <button id="connect-btn">ENTRAR</button>
+    </div>
+  </div>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+</html>
