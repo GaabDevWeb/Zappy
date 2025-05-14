@@ -110,3 +110,8 @@ app.post('/save-contact', (req, res) => {
   writeJSON(contactsPath, contacts);
   res.json({ success: true });
 });
+
+app.get('/get-contacts', (req, res) => {
+  const contacts = readJSON(contactsPath);
+  res.json(contacts);
+});
