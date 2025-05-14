@@ -192,3 +192,5 @@ io.on('connection', (socket) => {
     console.log('Cliente desconectado:', socket.id);
   });
 });
+
+const PORT = 3000;
