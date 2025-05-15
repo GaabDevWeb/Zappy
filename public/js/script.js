@@ -18,3 +18,21 @@ connectBtn.addEventListener('click', () => {
   connectBtn.textContent = 'Conectando...';
   socket.emit('start_connection');
 });
+
+socket.on('status_update', (data) => {
+  const config = statusConfig[data.status] || statusConfig.error;
+  
+  statusMessage.innerHTML = `${config.emoji} ${data.message}`;
+  statusMessage.className = `status-${config.class}`;
+  
+  qrcodeContainer.style.display = data.status === 'waiting_qr' ? 'block' : 'none';
+  
+  if (data.status === 'error') {
+    connectBtn.disabled = false;
+    connectBtn.textContent = 'Tentar novamente';
+  }
+  
+  if (data.redirect) {
+    setTimeout(() => window.location.href = "/dashboard", 1500);
+  }
+});
