@@ -36,3 +36,13 @@ socket.on('status_update', (data) => {
     setTimeout(() => window.location.href = "/dashboard", 1500);
   }
 });
+
+socket.on('qr_code', (base64Qrimg) => {
+  qrcodeImg.src = base64Qrimg;
+});
+
+socket.on('connect_error', () => {
+  statusMessage.innerHTML = '🔴 Erro de conexão com o servidor';
+  connectBtn.disabled = false;
+  connectBtn.textContent = 'Tentar novamente';
+});
