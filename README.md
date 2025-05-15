@@ -1,4 +1,4 @@
-<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=238636&height=120&section=header"/>
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=262626&height=120&section=header"/>
 
 # Zappy
 
@@ -39,4 +39,4 @@ npm start
 - **Envio em Massa**: Selecione contatos e envie mensagens personalizadas para vários destinatários de uma só vez.
 - **Interface Web**: Gerencie tudo através de uma interface amigável.
 
-<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=238636&height=120&section=footer"/>
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=262626&height=120&section=footer"/>
