@@ -70,7 +70,13 @@ select {
   border: 1px solid #000;
   font-size: 1rem;
   background: #f9f9f9;
+  font-family: 'lato', sans-serif;
+}
+
+input::placeholder {
   font-family: 'Nura', sans-serif;
+  font-size: 14px;
+  color: #737373; /* exemplo da sua paleta */
 }
 
 /* Mensagens salvas */
@@ -326,3 +332,16 @@ option:checked {
   gap: 0.5rem;
 }
 
+
+.toggle-contacts, .toggle-messages{
+  cursor: pointer;
+  transition: ease 0.3s;
+  
+}
+.toggle-messages:hover{
+  color: #404040;
+}
+
+.toggle-contacts:hover{
+  color: #404040;
+}
