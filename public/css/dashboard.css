@@ -8,11 +8,33 @@
   font-display: swap;
 }
 
-/* Reset e Configurações Gerais */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Nura', sans-serif;
+}
+
+input[type="text"],
+select,
+option,
+#messages-list li,
+.message-card,
+.message-text,
+.empty-message,
+.error-message,
+#contacts-list,
+.contact-card,
+.contact-info,
+.contacts-checkboxes,
+.contact-checkbox-item,
+#contacts-checkboxes label,
+.contact-info span,
+.contact-checkbox-item label {
+  font-family: 'Lato', sans-serif;
+}
+
+input::placeholder {
   font-family: 'Nura', sans-serif;
 }
 
@@ -25,7 +47,6 @@ body {
   position: relative;
 }
 
-/* Layout Principal */
 .container {
   display: flex;
   flex-direction: column;
@@ -33,6 +54,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
 
 header h1 {
@@ -41,7 +64,6 @@ header h1 {
   margin-bottom: 2rem;
 }
 
-/* Seções e Cards */
 .sections-container {
   display: flex;
   gap: 2rem;
@@ -61,7 +83,6 @@ header h1 {
   margin-bottom: 1rem;
 }
 
-/* Formulários e Inputs */
 input[type="text"],
 select {
   width: 100%;
@@ -70,66 +91,12 @@ select {
   border: 1px solid #000;
   font-size: 1rem;
   background: #f9f9f9;
-  font-family: 'Nura', sans-serif;
 }
 
-/* Mensagens salvas */
-#messages-list li,
-.message-card,
-.message-text,
-.empty-message,
-.error-message {
-  font-family: 'Lato', sans-serif;
-  font-size: 17px;
-}
-
-/* Contatos salvos */
-#contacts-list,
-.contact-card,
-.contact-info,
-.contacts-checkboxes,
-.contact-checkbox-item,
-#contacts-checkboxes label {
-  font-family: 'Lato', sans-serif;
-}
-
-/* Números salvos */
-.contact-info span,
-.contact-checkbox-item label {
-  font-family: 'Lato', sans-serif;
-}
-
-/* Botões */
-button {
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border: none;
-  background-color: #333333f5;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background-color: #555;
-}
-
-/* Seção de Envio em Massa */
-.mass-send-section {
-  width: 100%;
-  position: relative;
-}
-
-
-#message-select{
-  background: none;
-}
-
-option{
+option {
   background-color: rgba(255, 255, 255, 0.9);
   color: #333;
   padding: 10px 15px;
-  font-family: 'Lato', sans-serif;
   font-size: 15px;
   transition: all 0.2s ease;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -147,26 +114,39 @@ option:focus {
   font-weight: 500;
 }
 
-select:focus option:checked {
-  background: rgba(51, 51, 51, 0.9) !important;
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #333333f5;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-option:checked {
-  background-color: #333;
-  color: white;
+button:hover {
+  background-color: #555;
 }
 
 #show-sender-btn {
-  width: 50%;
-  padding: 1rem;
-  font-size: 1.1rem;
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  background-color: #111;
+  color: white;
+  margin-bottom: 1rem;
 }
 
-#sender-container {
-  margin-top: 1rem;
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-/* Listas de Mensagens e Contatos */
 #messages-container,
 #contacts-container {
   margin-top: 1rem;
@@ -194,20 +174,26 @@ option:checked {
   gap: 0.6rem;
 }
 
-.toggle-contacts, .toggle-messages{
+#contacts-checkboxes {
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toggle-contacts,
+.toggle-messages {
   cursor: pointer;
   transition: ease 0.5s;
 }
 
-.toggle-contacts:hover{
+.toggle-contacts:hover,
+.toggle-messages:hover {
   color: #333333d5;
 }
 
-.toggle-messages:hover{
-  color: #333333d5;
-}
-
-/* Barra de rolagem */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -224,7 +210,6 @@ option:checked {
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* Modal */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -247,74 +232,9 @@ option:checked {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-.close-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Utilitários */
-.hidden {
-  display: none;
-}
-
-.container {
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 100px;
-  /* Espaço para o botão */
-}
-
-#send-status {
-  min-height: 80px; /* Aumenta a altura mínima */
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-#send-mass-message-btn{
-  margin-top: 50px;
-}
-
-.mass-send-section {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
-  padding: 1.5rem; /* Adiciona mais espaço interno */
-}
-
-#show-sender-btn {
-  width: 100%;
-  padding: 1.5rem; /* Aumenta o padding do botão */
-  font-size: 1.2rem; /* Aumenta o tamanho da fonte */
-  background-color: #111;
-  color: white;
-  margin-bottom: 1rem;
-}
-
-/* Ajuste para o container do sender quando aberto */
-#sender-container {
-  background: rgba(133, 133, 133, 0.253);
+.glass-effect {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-top: 1rem;
-  padding: 1.5rem;
 }
 
 .glass-overlay {
@@ -327,34 +247,41 @@ option:checked {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
 }
 
-#contacts-checkboxes {
-  max-height: 160px; /* Defina o valor desejado para o espaço máximo */
-  overflow-y: auto;
-  padding-right: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+#sender-container {
+  background: rgba(133, 133, 133, 0.253);
+  margin-top: 1rem;
+  padding: 1.5rem;
 }
 
-/* Notificação de conexão */
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #404040;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  z-index: 1000;
-  animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
-} 
+.mass-send-section {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  padding: 1.5rem;
+}
 
-.notification.hidden {
-  display: none;
+#send-status {
+  min-height: 80px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#send-mass-message-btn {
+  margin-top: 50px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideIn {
@@ -367,3 +294,23 @@ option:checked {
   to { opacity: 0; }
 }
 
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #404040;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
+}
+
+.notification.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
