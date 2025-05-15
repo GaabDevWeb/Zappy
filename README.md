@@ -18,7 +18,7 @@ O **Zappy** é um bot inteligente que simplifica o envio de mensagens via WhatsA
 1. Clone este repositório ou baixe os arquivos para sua máquina.
 
 ```bash
-git clone git clone https://github.com/GaabDevWeb/zappy.git
+ git clone https://github.com/GaabDevWeb/zappy.git
 ```
    
 3. No terminal, navegue até a pasta do projeto e instale as dependências:
