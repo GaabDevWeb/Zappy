@@ -4,6 +4,7 @@ const qrcodeImg = document.getElementById('qrcode');
 const connectBtn = document.getElementById('connect-btn');
 const qrcodeContainer = document.getElementById('qrcode-container');
 
+// Mapeamento de status
 const statusConfig = {
   disconnected: { class: 'disconnected', emoji: '🔴' },
   connecting: { class: 'waiting', emoji: '🟡' },
