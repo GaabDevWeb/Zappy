@@ -4,7 +4,6 @@ const qrcodeImg = document.getElementById('qrcode');
 const connectBtn = document.getElementById('connect-btn');
 const qrcodeContainer = document.getElementById('qrcode-container');
 
-// Mapeamento de status com textos
 const statusConfig = {
   disconnected: { class: 'disconnected', text: 'Desconectado' },
   connecting: { class: 'waiting', text: 'Conectando...' },
@@ -24,7 +23,6 @@ socket.on('status_update', (data) => {
   const config = statusConfig[data.status] || statusConfig.error;
   statusMessage.className = `status-${config.class}`;
 
-  // Exibe o texto correto para cada status
   if (data.status === 'waiting_qr') {
     statusMessage.innerHTML = config.text;
   } else if (data.status === 'connected') {
@@ -39,9 +37,6 @@ socket.on('status_update', (data) => {
     statusMessage.innerHTML = config.text;
   }
 
-  // Removido: lógica do spinner do QR Code
-
-  // Se o QR code está sendo exibido, mostra "Aguardando leitura"
   if (qrcodeImg.src && qrcodeImg.style.display === 'block' && data.status !== 'connected') {
     statusMessage.innerHTML = 'Aguardando leitura';
   }
@@ -63,6 +58,7 @@ socket.on('connect_error', () => {
   connectBtn.disabled = false;
   connectBtn.textContent = 'Tentar novamente';
 });
+
 socket.on('qr_code', (base64Qrimg) => {
   qrcodeImg.src = base64Qrimg;
 });
