@@ -59,8 +59,7 @@ socket.on('status_update', (data) => {
 });
 
 socket.on('connect_error', () => {
-  // Exibe apenas o emoji de erro
-  statusMessage.innerHTML = '🔴';
+  statusMessage.innerHTML = 'Erro de conexão';
   connectBtn.disabled = false;
   connectBtn.textContent = 'Tentar novamente';
 });
