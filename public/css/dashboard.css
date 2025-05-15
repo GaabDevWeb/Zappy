@@ -70,13 +70,7 @@ select {
   border: 1px solid #000;
   font-size: 1rem;
   background: #f9f9f9;
-  font-family: 'lato', sans-serif;
-}
-
-input::placeholder {
   font-family: 'Nura', sans-serif;
-  font-size: 14px;
-  color: #737373; /* exemplo da sua paleta */
 }
 
 /* Mensagens salvas */
@@ -198,6 +192,19 @@ option:checked {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.6rem;
+}
+
+.toggle-contacts, .toggle-messages{
+  cursor: pointer;
+  transition: ease 0.5s;
+}
+
+.toggle-contacts:hover{
+  color: #333333d5;
+}
+
+.toggle-messages:hover{
+  color: #333333d5;
 }
 
 /* Barra de rolagem */
@@ -332,16 +339,31 @@ option:checked {
   gap: 0.5rem;
 }
 
+/* Notificação de conexão */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #404040;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
+} 
 
-.toggle-contacts, .toggle-messages{
-  cursor: pointer;
-  transition: ease 0.3s;
-  
-}
-.toggle-messages:hover{
-  color: #404040;
+.notification.hidden {
+  display: none;
 }
 
-.toggle-contacts:hover{
-  color: #404040;
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
