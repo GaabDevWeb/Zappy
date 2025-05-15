@@ -12,3 +12,9 @@ const statusConfig = {
   connected: { class: 'connected', emoji: '🟢' },
   error: { class: 'error', emoji: '🔴' }
 };
+
+connectBtn.addEventListener('click', () => {
+  connectBtn.disabled = true;
+  connectBtn.textContent = 'Conectando...';
+  socket.emit('start_connection');
+});
