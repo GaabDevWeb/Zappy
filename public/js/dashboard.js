@@ -3,6 +3,14 @@ import { initContactsSection, loadContacts } from './modules/contacts.js';
 import { initMassSendSection } from './modules/massSend.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Mostrar notificação de conexão
+  const notification = document.getElementById('connection-notification');
+  notification.classList.remove('hidden');
+  
+  setTimeout(() => {
+    notification.classList.add('hidden');
+  }, 3000);
+  
   initMessagesSection();
   initContactsSection();
   initMassSendSection();
@@ -30,4 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     container.style.display = isHidden ? 'block' : 'none';
     this.innerHTML = isHidden ? 'Contatos salvos ▲' : 'Contatos salvos ▼';
   });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  // Mostrar notificação de conexão
+  const notification = document.getElementById('connection-notification');
+  notification.classList.remove('hidden');
+  
+  setTimeout(() => {
+    notification.classList.add('hidden');
+  }, 3000);
 });
