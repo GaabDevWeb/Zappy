@@ -1,6 +1,5 @@
 
 
-
 # Zappy
 
 O **Zappy** é um bot inteligente que simplifica o envio de mensagens via WhatsApp, permitindo:
@@ -39,3 +38,5 @@ npm start
 - **Modelos de Mensagens**: Crie, edite e exclua mensagens para uso rápido.
 - **Envio em Massa**: Selecione contatos e envie mensagens personalizadas para vários destinatários de uma só vez.
 - **Interface Web**: Gerencie tudo através de uma interface amigável.
+
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=238636&height=120&section=footer"/>
