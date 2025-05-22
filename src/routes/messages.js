@@ -36,3 +36,11 @@ router.post('/update-message', (req, res) => {
     res.status(404).json({ error: 'Message not found' });
   }
 });
+
+router.post('/delete-message', (req, res) => {
+  const { id } = req.body;
+  const messages = readJSON(messagesPath);
+  const filteredMessages = messages.filter(m => m.id !== id);
+  writeJSON(messagesPath, filteredMessages);
+  res.json({ success: true });
+});
