@@ -15,3 +15,9 @@ router.post('/save-message', (req, res) => {
   writeJSON(messagesPath, messages);
   res.json({ success: true });
 });
+
+router.get('/get-messages', (req, res) => {
+  const messages = readJSON(messagesPath);
+  const sortedMessages = messages.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  res.json(sortedMessages);
+});
