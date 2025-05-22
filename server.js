@@ -8,3 +8,6 @@ import contactRoutes from './src/routes/contacts.js';
 import whatsappRoutes from './src/routes/whatsapp.js';
 import setupWhatsappSocket from './src/sockets/whatsapp.js';
 import { activeSessions } from './src/config/session.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
