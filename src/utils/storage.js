@@ -16,3 +16,12 @@ export function readJSON(filePath) {
     return [];
   }
 }
+
+export function writeJSON(filePath, data) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+}
+
+export const storagePaths = {
+  messagesPath,
+  contactsPath
+};
