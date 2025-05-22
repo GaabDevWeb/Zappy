@@ -1,0 +1,10 @@
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import messageRoutes from './src/routes/messages.js';
+import contactRoutes from './src/routes/contacts.js';
+import whatsappRoutes from './src/routes/whatsapp.js';
+import setupWhatsappSocket from './src/sockets/whatsapp.js';
+import { activeSessions } from './src/config/session.js';
