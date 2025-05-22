@@ -1,5 +1,5 @@
 import express from 'express';
-import { readJSON, writeJSON, storagePaths } from '../utils/storage.js'; 
+import { readJSON, writeJSON, storagePaths } from '../utils/storage.js';
 
 const router = express.Router();
 const { contactsPath } = storagePaths;
@@ -29,3 +29,5 @@ router.post('/delete-contact', (req, res) => {
   writeJSON(contactsPath, filteredContacts);
   res.json({ success: true });
 });
+
+export default router;
