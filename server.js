@@ -15,3 +15,12 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
