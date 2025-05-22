@@ -30,3 +30,17 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+app.use('/messages', messageRoutes);
+app.use('/contacts', contactRoutes);
+app.use('/whatsapp', whatsappRoutes);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+setupWhatsappSocket(io, activeSessions);
