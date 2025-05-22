@@ -22,3 +22,5 @@ router.post('/send-whatsapp', async (req, res) => {
     });
   }
 });
+
+export default router;
