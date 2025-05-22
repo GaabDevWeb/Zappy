@@ -31,10 +31,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Rotas
 app.use('/messages', messageRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/whatsapp', whatsappRoutes);
 
+// Configurações iniciais
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -43,6 +45,7 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
+// Socket.io
 setupWhatsappSocket(io, activeSessions);
 
 const PORT = 3000;
