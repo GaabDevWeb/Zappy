@@ -29,3 +29,5 @@ router.post('/delete-contact', (req, res) => {
   writeJSON(contactsPath, filteredContacts);
   res.json({ success: true });
 });
+
+export default router;
