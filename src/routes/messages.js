@@ -44,3 +44,5 @@ router.post('/delete-message', (req, res) => {
   writeJSON(messagesPath, filteredMessages);
   res.json({ success: true });
 });
+
+export default router;
