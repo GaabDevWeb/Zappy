@@ -34,3 +34,7 @@ app.use((req, res, next) => {
 app.use('/messages', messageRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/whatsapp', whatsappRoutes);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
